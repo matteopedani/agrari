@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    periti.agrari.org
+  </title>
+
+  <meta name="description" content="La nuova piattaforma per i Periti Agrari">
+
+  <link href="periti.agrari.org_files/css_002.css" rel="stylesheet" type="text/css">
+  <link href="periti.agrari.org_files/css.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="periti.agrari.org_files/bootstrap.min.css">
+
+  <link rel="stylesheet" href="periti.agrari.org_files/all.min.css">
+
+  <link rel="stylesheet" href="periti.agrari.org_files/main.css">
+  <link rel="canonical" href="http://periti.agrari.org/matteo.pedani/">
+  <link rel="alternate" type="application/rss+xml" title="periti.agrari.org" href="http://agrari.org/feed.xml">
+
+<script type="text/javascript" data-name="TokenSigning" data-by="Web-eID extension">(function pageScript() {
+        let hasDeprecationWarningDisplayed = false;
+        const eidPromises = {};
+        window.addEventListener("message", function (event) {
+            if (event.source !== window)
+                return;
+            if (event.data.src && (event.data.src === "background.js")) {
+                console.log("Page received: ");
+                console.log(event.data);
+                if (event.data.nonce) {
+                    const p = eidPromises[event.data.nonce];
+                    if (event.data.result === "ok") {
+                        if (event.data.signature !== undefined) {
+                            p.resolve({ hex: event.data.signature });
+                        }
+                        else if (event.data.version !== undefined) {
+                            p.resolve(event.data.extension + "/" + event.data.version);
+                        }
+                        else if (event.data.cert !== undefined) {
+                            p.resolve({ hex: event.data.cert });
+                        }
+                        else {
+                            console.log("No idea how to handle message");
+                            console.log(event.data);
+                        }
+                    }
+                    else {
+                        p.reject(new Error(event.data.result));
+                    }
+                    delete eidPromises[event.data.nonce];
+                }
+                else {
+                    console.log("No nonce in event msg");
+                }
+            }
+        }, false);
+        function nonce() {
+            let val = "";
+            const hex = "abcdefghijklmnopqrstuvwxyz0123456789";
+            for (let i = 0; i < 16; i++)
+                val += hex.charAt(Math.floor(Math.random() * hex.length));
+            return val;
+        }
+        function messagePromise(msg) {
+            if (!hasDeprecationWarningDisplayed) {
+                console.warn("TokenSigning API is deprecated. Please consider switching to the new Web-eID library.");
+                hasDeprecationWarningDisplayed = true;
+            }
+            return new Promise(function (resolve, reject) {
+                window.postMessage(msg, "*");
+                eidPromises[msg.nonce] = { resolve, reject };
+            });
+        }
+        window.TokenSigning = class TokenSigning {
+            getCertificate(options) {
+                const msg = {
+                    src: "page.js",
+                    nonce: nonce(),
+                    type: "CERT",
+                    lang: options.lang,
+                    filter: options.filter,
+                };
+                console.log("getCertificate()");
+                return messagePromise(msg);
+            }
+            sign(cert, hash, options) {
+                const msg = {
+                    src: "page.js",
+                    nonce: nonce(),
+                    type: "SIGN",
+                    cert: cert.hex,
+                    hash: hash.hex,
+                    hashtype: hash.type,
+                    lang: options.lang,
+                    info: options.info,
+                };
+                console.log("sign()");
+                return messagePromise(msg);
+            }
+            getVersion() {
+                const msg = {
+                    src: "page.js",
+                    nonce: nonce(),
+                    type: "VERSION",
+                };
+                console.log("getVersion()");
+                return messagePromise(msg);
+            }
+        };
+    })();</script></head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="http://agrari.org/">periti.agrari.org</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <!-- Navigation -->
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="http://agrari.org/chisiamo/">chisiamo</a>
+        </li>
+<!--
+        <li class="nav-item">
+          <a class="nav-link" href="/diario/">diario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cronache/">cronache</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/appuntamenti/">appuntamenti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/editoria/">editoria</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/locale/">locale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/radio/">radio</a>
+        </li>
+        <li  class="nav-item">
+          <a class="nav-link" href="/tags/"><i class="fa fa-tags" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search/"><i class="fa fa-search" aria-hidden="true"></i>
+          </a>
+        </li>
+-->
+      </ul>
+   
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+  <header class="masthead">
+    
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1></h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+
+
+      
+<div class="row">
+  <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="periti.agrari.org_files/matteo.pedani.jpg" alt="">
+              <!-- Contact Details Column -->
+      <div class="col-lg-8 mb-4">
+        <h3>indirizzo</h3>
+        <p>
+          <br>via dell'alberata 3 
+          <br>00046 Grottaferrata RM Italia
+        </p>
+        <p>
+          <abbr title="telefono">telefono</abbr>: 069415152
+        <br>
+          <abbr title="cellulare">cellulare</abbr>: 3343637690
+  
+        </p>
+        <div class="container-full">
+          <div class="row">
+          <p>
+            <abbr title="orari">orari</abbr>: dal lunedì al venerdì 9-18
+            <br>
+           <abbr title="email">email</abbr>:
+           <a href="mailto:matteo@pedani.it">matteo@pedani.it
+            </a>
+           <br>
+           <abbr title="pec">pec</abbr>:
+           <a href="mailto:matteo.pedani@postecert.it">matteo.pedani@postecert.it
+           </a>
+          </p>
+          </div>
+          </div>
+  
+      </div>
+  
+        </div>
+        <div class="col-lg-6">
+          <h2>Perito Agrario</h2>
+          <h2>Matteo Pedani</h2>
+          <p>Diplomato presso l’Istituto Tecnico Agrario Giuseppe Garibaldi di Roma nel 1987.</p>
+
+<p>Iscritto all albo dei Periti Agrari di Roma al n 1206 dal 1989.</p>
+
+<p>Dopo aver svolto l’attività di Docente con corsi sull Actinidia e Apicoltura presso la <a href="https://it.wikipedia.org/wiki/Confederazione_italiana_agricoltori">Confederazione italiana coltivatori</a>
+ di Roma,
+inizio l’attività di Apicoltore e la libera professione, contestualmente
+ mi diplomo presso il Centro Sperimentale di Cinematografia ed inizio ad
+ 
+realizzare filmati documentari. <a href="http://www.pedani.it/">www.pedani.it</a></p>
+
+ 
+          <h4>Attività agricole professionali prevalenti</h4>
+
+
+
+<ul>
+
+<li>
+
+  apicoltura
+
+</li>
+
+<li>
+
+  realizzazione giardini pensili
+
+</li>
+
+<li>
+
+  progettazione giardini pensili
+
+</li>
+
+<li>
+
+  verde urbano
+
+</li>
+
+<li>
+
+  certificazioni energetiche
+
+</li>
+
+<li>
+
+  progettazione orti urbani
+
+</li>
+
+<li>
+
+  valutazione abbattimento alberi
+
+</li>
+
+<li>
+
+  campionamenti per  analisi terreno
+
+</li>
+
+<li>
+
+  catasto
+
+</li>
+
+<li>
+
+  divisioni fondiarie
+
+</li>
+
+<li>
+
+  progettazione impianti di irrigazione
+
+</li>
+
+<li>
+
+  progettazione impianti di scolo
+
+</li>
+
+<li>
+
+  miglioramenti colturali
+
+</li>
+
+</ul>
+
+  </div>
+  </div>
+  <div class="container">
+  
+
+  
+    <!-- Content Row -->
+    <div class="row">
+
+
+        <!-- Embedded Google Map -->
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe src="periti.agrari.org_files/embed.html" style="border:0;" allowfullscreen="" width="600" height="450" frameborder="0">
+        </iframe>
+  
+        </div>
+       
+ 
+  
+      
+    </div>
+    <!-- /.row -->
+  
+  
+  </div>
+  </div>  
+
+
+      </div>
+    </div>
+   
+
+
+  <!-- Footer -->
+
+<hr>
+ 
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:matteo@pedani.it">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/matteopedani">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/matteo.pedani">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/matteopedani/">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright © Matteo Pedani 2020</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="periti.agrari.org_files/jquery.min.js"></script>
+<script src="periti.agrari.org_files/bootstrap.bundle.min.js"></script>
+<script src="periti.agrari.org_files/clean-blog.min.js"></script>
+
+<script src="periti.agrari.org_files/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="periti.agrari.org_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX-X');
+</script>
+
+
+
+
+
+
+</body></html>
